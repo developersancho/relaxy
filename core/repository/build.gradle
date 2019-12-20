@@ -1,0 +1,75 @@
+import com.mg.buildsrc.*
+
+plugins {
+    id("com.android.library")
+    id("kotlin-android")
+    id("kotlin-android-extensions")
+    id("kotlin-kapt")
+}
+
+android {
+    compileSdkVersion(Versions.compileSdk)
+    buildToolsVersion(Versions.buildTools)
+
+    defaultConfig {
+        minSdkVersion(Versions.minSdk)
+        targetSdkVersion(Versions.targetSdk)
+        testInstrumentationRunner(BuildPlugins.testInstrumentationRunner)
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+
+    kapt {
+        useBuildCache = true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(Modules.remote)
+    implementation project(Modules.local)
+    implementation(Libraries.kotlin)
+    implementation(Libraries.appCompat)
+    implementation(Libraries.coreKtx)
+    // coroutines
+    implementation(Libraries.kotlinCoroutineAndroid)
+    implementation(Libraries.kotlinCoroutineCore)
+    // retrofit
+    implementation(Libraries.gson)
+    implementation(Libraries.retrofit)
+    implementation(Libraries.retrofitConvertorGson)
+    implementation(Libraries.okhttp)
+    implementation(Libraries.okhttpLogging)
+    implementation(Libraries.retrofitCoroutineAdapter)
+    // koin
+    implementation(Libraries.koinAndroid)
+    implementation(Libraries.koinCore)
+    implementation(Libraries.koinScope)
+    implementation(Libraries.koinViewModel)
+    // test
+    testImplementation(Libraries.junit)
+    testImplementation(Libraries.koinTest)
+    testImplementation(Libraries.mockWebServer)
+    androidTestImplementation(Libraries.junitExt)
+    androidTestImplementation(Libraries.espressoCore)
+}

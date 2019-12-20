@@ -1,0 +1,33 @@
+import com.mg.buildsrc.BuildPlugins
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.3.61'
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url = BuildPlugins.jitpack }
+    }
+    dependencies {
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle.kts files
+        classpath(BuildPlugins.androidGradlePlugin)
+        classpath(BuildPlugins.kotlinGradlePlugin)
+        classpath(BuildPlugins.safeArgsGradlePlugin)
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url = BuildPlugins.jitpack }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

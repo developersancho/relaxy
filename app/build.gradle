@@ -1,0 +1,141 @@
+import com.mg.buildsrc.*
+
+plugins {
+    id("com.android.application")
+    id("kotlin-android")
+    id("kotlin-android-extensions")
+    id("kotlin-kapt")
+    id("androidx.navigation.safeargs.kotlin")
+}
+
+def buildVersionCode = new Date().format("yyMMddHHmm", TimeZone.getTimeZone("Europe/Istanbul")).toInteger()
+
+android {
+    compileSdkVersion(Versions.compileSdk)
+    buildToolsVersion(Versions.buildTools)
+    defaultConfig {
+        applicationId ApplicationId.id
+        minSdkVersion(Versions.minSdk)
+        targetSdkVersion(Versions.targetSdk)
+        testInstrumentationRunner(BuildPlugins.testInstrumentationRunner)
+        vectorDrawables.useSupportLibrary = BuildPlugins.supportLibraryVectorDrawables
+        multiDexEnabled(BuildPlugins.multidexEnable)
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+
+    kapt {
+        useBuildCache = true
+    }
+
+
+    flavorDimensions 'default'
+
+    productFlavors {
+
+        dev {
+            dimension = 'default'
+            applicationIdSuffix = '.dev'
+            versionCode = buildVersionCode
+            versionName = '1.0.0'
+            versionNameSuffix = '-dev'
+            buildConfigField("String", "BASE_URL", "\"http://localhost:8888/\"")
+            buildConfigField("String", 'DB_NAME', '"relaxy.db"')
+            resValue "string", "app_name", "Test - App"
+        }
+
+        prod {
+            dimension = 'default'
+            applicationIdSuffix = ''
+            versionCode = buildVersionCode
+            versionName = '1.0.0'
+            versionNameSuffix = ''
+            buildConfigField("String", "BASE_URL", "\"http://localhost:8888/\"")
+            buildConfigField("String", 'DB_NAME', '"relaxy.db"')
+            resValue "string", "app_name", "Prod - App"
+        }
+    }
+}
+
+android.applicationVariants.all { variant ->
+    def appName = "relaxy-app"
+    variant.outputs.all { output ->
+        def newApkName = "${appName}-${variant.versionName}.apk"
+        output.outputFileName = new File(newApkName)
+    }
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation(Libraries.kotlin)
+    implementation(Libraries.appCompat)
+    implementation(Libraries.coreKtx)
+    implementation(Libraries.constraintLayout)
+    implementation(Libraries.material)
+    implementation(Libraries.legacy)
+    // Bindings
+    kapt(Libraries.databinding)
+    // navigation
+    implementation(Libraries.navFragment)
+    implementation(Libraries.navFragmentKtx)
+    implementation(Libraries.navUi)
+    implementation(Libraries.navUiKtx)
+    // Coroutines
+    implementation(Libraries.kotlinCoroutineCore)
+    implementation(Libraries.kotlinCoroutineAndroid)
+    // retrofit - gson
+    implementation(Libraries.gson)
+    implementation(Libraries.retrofit)
+    implementation(Libraries.retrofitConvertorGson)
+    // okhttp
+    implementation(Libraries.okhttp)
+    implementation(Libraries.okhttpLogging)
+    implementation(Libraries.okhttpUrlConnection)
+    // lifecycle
+    implementation(Libraries.lifeCycleLiveData)
+    implementation(Libraries.lifeCycleViewModel)
+    //implementation(Libraries.lifeCycleViewModelKtx)
+    implementation(Libraries.lifeCycleExtension)
+    kapt(Libraries.lifeCycleCommon)
+    // koin for di
+    implementation(Libraries.koinCore)
+    implementation(Libraries.koinAndroid)
+    implementation(Libraries.koinScope)
+    implementation(Libraries.koinViewModel)
+    // room
+    implementation(Libraries.room)
+    kapt(Libraries.roomCompiler)
+    // glide
+    implementation(Libraries.glide)
+    kapt(Libraries.glideCompiler)
+
+    // test implementation
+    testImplementation(Libraries.koinTest)
+    testImplementation(Libraries.lifeCycleTest)
+    testImplementation(Libraries.junit)
+    // android test implementation
+    androidTestImplementation(Libraries.junitExt)
+    androidTestImplementation(Libraries.espressoCore)
+}

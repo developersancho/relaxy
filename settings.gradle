@@ -1,0 +1,8 @@
+include ':buildSrc'
+include ':common:widget'
+include ':common:util'
+include ':core:repository'
+include ':core:local'
+include ':core:remote'
+include ':app'
+rootProject.name='relaxy'
