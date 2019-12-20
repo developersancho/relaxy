@@ -25,4 +25,8 @@
 
     <style name="LoadingDialogDefault" parent="android:Theme.DeviceDefault.Light.Dialog" />
 
+    <style name="AppTheme.Splash" parent="AppTheme">
+        <item name="android:colorBackground">@android:color/transparent</item>
+    </style>
+
 </resources>
