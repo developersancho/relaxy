@@ -89,7 +89,15 @@ android.applicationVariants.all { variant ->
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // modules
+    implementation project(Modules.manager)
+    implementation project(Modules.remote)
+    implementation project(Modules.local)
+    implementation project(Modules.widget)
+    implementation project(Modules.util)
+
     implementation(Libraries.kotlin)
+    implementation(Libraries.kotlinReflection)
     implementation(Libraries.appCompat)
     implementation(Libraries.coreKtx)
     implementation(Libraries.constraintLayout)
@@ -130,6 +138,9 @@ dependencies {
     // glide
     implementation(Libraries.glide)
     kapt(Libraries.glideCompiler)
+
+    implementation(Libraries.lottie)
+    implementation(Libraries.timber)
 
     // test implementation
     testImplementation(Libraries.koinTest)

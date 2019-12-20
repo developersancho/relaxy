@@ -17,6 +17,7 @@ class CoreApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        registerActivityLifecycleCallbacks(CoreLifecycleCallbacks())
         context = applicationContext
         configureDi()
     }
