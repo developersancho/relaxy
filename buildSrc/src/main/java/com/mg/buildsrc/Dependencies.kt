@@ -40,6 +40,7 @@ object Versions {
     val espresso = "3.2.0"
     val mockWebServer = "2.7.5"
     val retrofitCoroutines = "0.9.2"
+    val conscrypt = "2.2.1"
     val flashbar = "1.0.3"
     val lottie = "3.2.0"
     val multidex = "1.0.3"
@@ -94,6 +95,7 @@ object Libraries {
     val retrofitConvertorGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     val retrofitCoroutineAdapter =
         "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.retrofitCoroutines}"
+    val conscrypt = "org.conscrypt:conscrypt-android:${Versions.conscrypt}"
 
     // okhttp
     val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"

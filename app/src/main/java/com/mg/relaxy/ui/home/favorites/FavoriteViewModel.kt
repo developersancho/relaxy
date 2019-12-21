@@ -1,6 +1,5 @@
 package com.mg.relaxy.ui.home.favorites
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.mg.local.entity.SoundEntity
@@ -27,7 +26,7 @@ class FavoriteViewModel(dataManager: IDataManager) : BaseViewModel<IBasePresente
                         it.isFav = true
                         dataManager.insertSound(transformEntity(it))
                     }
-                    favorites.value = SingleEvent(state.data)
+                    getMyFavorites()
                 }
                 is NetworkState.Error -> {
                     getPresenter()?.hideLoading()

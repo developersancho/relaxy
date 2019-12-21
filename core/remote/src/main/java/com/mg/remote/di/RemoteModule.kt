@@ -26,6 +26,7 @@ fun remoteModule(baseUrl: String) = module {
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
+            .followSslRedirects(true)
             .addInterceptor { chain ->
                 var request = chain.request().newBuilder()
                 if (NetworkUtils.hasInternet(androidContext())) {

@@ -3,7 +3,6 @@ package com.mg.relaxy.ui.home.favorites
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.Observer
 import com.mg.relaxy.R
 import com.mg.relaxy.base.BaseFragment
 import com.mg.relaxy.databinding.FragmentFavoriteBinding
