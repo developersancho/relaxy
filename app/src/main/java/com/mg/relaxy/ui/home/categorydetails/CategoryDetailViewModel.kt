@@ -7,10 +7,8 @@ import com.mg.local.entity.SoundEntity
 import com.mg.manager.IDataManager
 import com.mg.relaxy.base.BaseViewModel
 import com.mg.relaxy.base.IBasePresenter
-import com.mg.remote.model.Category
-import com.mg.remote.model.CategoryDetail
+import com.mg.remote.model.Sound
 import com.mg.remote.network.NetworkState
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -19,8 +17,8 @@ class CategoryDetailViewModel(dataManager: IDataManager) :
 
     var categoryId: Int? = null
 
-    private val _categoryDetails = MutableLiveData<ArrayList<CategoryDetail>>()
-    val categoryDetails: LiveData<ArrayList<CategoryDetail>> get() = _categoryDetails
+    private val _categoryDetails = MutableLiveData<ArrayList<Sound>>()
+    val categoryDetails: LiveData<ArrayList<Sound>> get() = _categoryDetails
 
     fun getCategoryDetail() = viewModelScope.launch {
         getPresenter()?.showLoading()

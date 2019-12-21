@@ -7,7 +7,7 @@ import com.mg.local.entity.SoundEntity
 
 @Database(
     entities = [SoundEntity::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class CoreDatabase : RoomDatabase() {

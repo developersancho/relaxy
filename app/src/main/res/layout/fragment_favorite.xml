@@ -1,21 +1,29 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.mg.relaxy.ui.home.favorites.FavoriteFragment">
+        android:layout_height="match_parent">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
-            android:gravity="center"
+        <com.mg.widget.ScrollChildSwipeRefreshLayout
+            android:id="@+id/swipeFavorite"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Favorilerim" />
+            android:layout_height="match_parent">
 
-    </FrameLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFavorite"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_favorite" />
+
+        </com.mg.widget.ScrollChildSwipeRefreshLayout>
+
+    </RelativeLayout>
 </layout>

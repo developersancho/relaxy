@@ -47,8 +47,6 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment(), IBasePresenter {
     override fun onCreate(savedInstanceState: Bundle?) {
         logLifecycleEvents("onCreate")
         super.onCreate(savedInstanceState)
-        observeUI()
-
     }
 
     override fun onCreateView(
@@ -57,7 +55,6 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment(), IBasePresenter {
         savedInstanceState: Bundle?
     ): View? {
         logLifecycleEvents("onCreateView")
-        initPresenter()
         return DataBindingUtil.inflate<T>(
             inflater,
             layoutId,
@@ -69,6 +66,8 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment(), IBasePresenter {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         logLifecycleEvents("onViewCreated")
         super.onViewCreated(view, savedInstanceState)
+        initPresenter()
+        observeUI()
         bindingUI()
         initUI(view, savedInstanceState)
         initListener()

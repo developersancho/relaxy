@@ -1,5 +1,6 @@
 package com.mg.manager
 
+import com.mg.local.dao.SoundDao
 import com.mg.remote.network.NetworkState
 import com.mg.remote.service.ICategoryService
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -16,11 +17,12 @@ import timber.log.Timber
 class DataManagerTest : BaseDataManagerTest() {
 
     private val categoryService by inject<ICategoryService>()
+    private val soundDao by inject<SoundDao>()
 
     @Before
     fun setUpData() {
         MockitoAnnotations.initMocks(this)
-        dataManager = DataManager(categoryService)
+        dataManager = DataManager(categoryService, soundDao)
     }
 
     @Test
@@ -44,6 +46,21 @@ class DataManagerTest : BaseDataManagerTest() {
             when (it) {
                 is NetworkState.Success -> {
                     Assert.assertEquals(10, it.data.size)
+                }
+
+                is NetworkState.Error -> {
+                    Timber.d("NetworkState.Error : ${it.exception.message}")
+                }
+            }
+        }
+    }
+
+    @Test
+    fun `Get Favorites`() = runBlocking {
+        dataManager.getFavorites().collect {
+            when (it) {
+                is NetworkState.Success -> {
+                    Assert.assertEquals(4, it.data.size)
                 }
 
                 is NetworkState.Error -> {

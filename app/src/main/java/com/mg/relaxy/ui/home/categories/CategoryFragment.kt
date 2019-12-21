@@ -9,6 +9,7 @@ import com.mg.relaxy.R
 import com.mg.relaxy.base.BaseFragment
 import com.mg.relaxy.databinding.FragmentCategoryBinding
 import com.mg.remote.model.Category
+import com.mg.util.helpers.SingleEventObserver
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -26,11 +27,11 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>() {
 
     override fun bindingUI() {
         binding.vm = viewModel
-        binding.lifecycleOwner = viewLifecycleOwner
+        binding.lifecycleOwner = this
     }
 
     override fun observeUI() {
-        viewModel.categories.observe(this, Observer {
+        viewModel.categories.observe(this, SingleEventObserver {
             adapter?.submitList(it)
             binding.swipeCategories.isRefreshing = false
         })
