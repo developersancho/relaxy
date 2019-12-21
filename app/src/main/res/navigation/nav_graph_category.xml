@@ -9,12 +9,24 @@
         android:id="@+id/category"
         android:name="com.mg.relaxy.ui.home.categories.CategoryFragment"
         android:label="@string/library"
-        tools:layout="@layout/fragment_category" />
+        tools:layout="@layout/fragment_category">
+        <action
+            android:id="@+id/action_category_to_categoryDetailsFragment"
+            app:destination="@id/categoryDetailsFragment"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/categoryDetailsFragment"
         android:name="com.mg.relaxy.ui.home.categorydetails.CategoryDetailsFragment"
         android:label="@string/library_detail"
-        tools:layout="@layout/fragment_category_details" />
+        tools:layout="@layout/fragment_category_details" >
+        <argument
+            android:name="category"
+            app:argType="com.mg.remote.model.Category" />
+    </fragment>
 
 </navigation>

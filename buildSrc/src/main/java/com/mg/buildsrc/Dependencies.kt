@@ -42,6 +42,7 @@ object Versions {
     val retrofitCoroutines = "0.9.2"
     val flashbar = "1.0.3"
     val lottie = "3.2.0"
+    val multidex = "1.0.3"
 }
 
 object Libraries {
@@ -61,6 +62,9 @@ object Libraries {
 
     // databinding
     val databinding = "com.android.databinding:compiler:${Versions.androidPlugin}"
+
+    // multidex
+    val multidex = "com.android.support:multidex:${Versions.multidex}"
 
     // glide for image
     val glide = "com.github.bumptech.glide:glide:${Versions.glide}"

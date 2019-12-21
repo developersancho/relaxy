@@ -1,6 +1,7 @@
 package com.mg.remote.di
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.mg.remote.service.ICategoryService
 import com.mg.util.NetworkUtils
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -53,5 +54,5 @@ fun remoteModule(baseUrl: String) = module {
             .build()
     }
 
-    //factory { get<Retrofit>().create(ServiceName::class.java) }
+    factory { get<Retrofit>().create(ICategoryService::class.java) }
 }

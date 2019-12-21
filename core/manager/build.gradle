@@ -66,6 +66,8 @@ dependencies {
     implementation(Libraries.koinCore)
     implementation(Libraries.koinScope)
     implementation(Libraries.koinViewModel)
+
+    implementation(Libraries.timber)
     // test
     testImplementation(Libraries.junit)
     testImplementation(Libraries.koinTest)

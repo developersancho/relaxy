@@ -1,23 +1,34 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.mg.relaxy.ui.home.categories.CategoryFragment">
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.mg.relaxy.ui.home.categories.CategoryViewModel" />
+
     </data>
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.mg.relaxy.ui.home.categories.CategoryFragment">
+        android:layout_height="match_parent">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
-            android:id="@+id/tvCategory"
+        <com.mg.widget.ScrollChildSwipeRefreshLayout
+            android:id="@+id/swipeCategories"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/acme"
-            android:gravity="center"
-            android:text="Kategoriler" />
+            android:layout_height="match_parent">
 
-    </FrameLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCategory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_category" />
+
+        </com.mg.widget.ScrollChildSwipeRefreshLayout>
+
+    </RelativeLayout>
 </layout>
