@@ -8,13 +8,13 @@
     <fragment
         android:id="@+id/category"
         android:name="com.mg.relaxy.ui.home.categories.CategoryFragment"
-        android:label="CategoryFragment"
+        android:label="@string/library"
         tools:layout="@layout/fragment_category" />
 
     <fragment
         android:id="@+id/categoryDetailsFragment"
         android:name="com.mg.relaxy.ui.home.categorydetails.CategoryDetailsFragment"
-        android:label="CategoryDetailsFragment"
+        android:label="@string/library_detail"
         tools:layout="@layout/fragment_category_details" />
 
 </navigation>

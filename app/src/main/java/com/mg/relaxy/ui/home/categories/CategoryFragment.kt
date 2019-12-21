@@ -2,6 +2,7 @@ package com.mg.relaxy.ui.home.categories
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import com.mg.relaxy.R
 import com.mg.relaxy.base.BaseFragment
 import com.mg.relaxy.databinding.FragmentCategoryBinding
@@ -31,6 +32,8 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>() {
     }
 
     override fun initListener() {
-
+        binding.tvCategory.setOnClickListener {
+            findNavController().navigate(R.id.categoryDetailsFragment)
+        }
     }
 }

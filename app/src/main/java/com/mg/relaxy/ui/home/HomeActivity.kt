@@ -106,7 +106,8 @@ class HomeActivity : AppCompatActivity(),
         }
     }
 
-    inner class ViewPagerAdapter : FragmentPagerAdapter(supportFragmentManager) {
+    inner class ViewPagerAdapter :
+        FragmentPagerAdapter(supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
         override fun getItem(position: Int): Fragment = fragments[position]
 
