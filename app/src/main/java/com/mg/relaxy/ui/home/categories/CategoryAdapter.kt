@@ -27,7 +27,7 @@ class CategoryAdapter : ListAdapter<Category, CategoryAdapter.CategoryViewHolder
     inner class CategoryViewHolder(view: View) : BaseViewHolder<ItemCategoryBinding>(view) {
         fun bind(category: Category) {
             binding.item = category
-            binding.root.setOnClickListener {
+            binding.cardCategory.setOnClickListener {
                 onItemClick?.invoke(category)
             }
         }
