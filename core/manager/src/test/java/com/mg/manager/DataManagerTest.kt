@@ -38,4 +38,19 @@ class DataManagerTest : BaseDataManagerTest() {
         }
     }
 
+    @Test
+    fun `Get Category Details`() = runBlocking {
+        dataManager.getCategoryDetails().collect {
+            when (it) {
+                is NetworkState.Success -> {
+                    Assert.assertEquals(10, it.data.size)
+                }
+
+                is NetworkState.Error -> {
+                    Timber.d("NetworkState.Error : ${it.exception.message}")
+                }
+            }
+        }
+    }
+
 }

@@ -21,4 +21,12 @@ class CategoryServiceTest : BaseServiceTest() {
         Assert.assertEquals(1000, response?.first().categoryId)
     }
 
+    @Test
+    fun check_category_detail() = runBlocking {
+        val response = categoryService.categoryDetail()
+
+        Assert.assertEquals(10, response?.size)
+        Assert.assertEquals(1000, response?.first().categoryId)
+    }
+
 }

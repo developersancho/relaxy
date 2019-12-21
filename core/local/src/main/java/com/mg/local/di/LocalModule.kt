@@ -13,6 +13,6 @@ fun localModule(dbName: String) = module {
             .build()
     }
 
-    //single { get<CoreDatabase>().daoName }
+    single { get<CoreDatabase>().soundDao() }
 
 }
