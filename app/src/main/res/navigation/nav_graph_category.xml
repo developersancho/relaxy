@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/categoryDetailsFragment"
-        android:name="com.mg.relaxy.ui.home.categorydetails.CategoryDetailsFragment"
+        android:name="com.mg.relaxy.ui.home.categorydetails.CategoryDetailFragment"
         android:label="@string/library_detail"
         tools:layout="@layout/fragment_category_details" >
         <argument
