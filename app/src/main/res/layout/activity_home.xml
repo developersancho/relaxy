@@ -7,5 +7,17 @@
     android:background="@color/color_error"
     tools:context="com.mg.relaxy.ui.home.HomeActivity">
 
+    <com.mg.widget.NonSwipingViewPager
+        android:id="@+id/main_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/menu_home" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
