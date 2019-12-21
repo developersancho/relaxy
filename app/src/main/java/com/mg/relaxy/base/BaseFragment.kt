@@ -10,8 +10,8 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import com.mg.util.helpers.AutoClearedValue
 import com.mg.util.extensions.showFlashBar
+import com.mg.util.helpers.AutoClearedValue
 import com.mg.widget.LoadingLottieDialog
 import timber.log.Timber
 
@@ -48,6 +48,7 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment(), IBasePresenter {
         logLifecycleEvents("onCreate")
         super.onCreate(savedInstanceState)
         observeUI()
+
     }
 
     override fun onCreateView(
