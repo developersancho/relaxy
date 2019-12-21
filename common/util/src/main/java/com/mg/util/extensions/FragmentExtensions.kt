@@ -7,11 +7,11 @@ import com.mg.util.R
 
 fun FragmentActivity.showFlashBar(message: String) {
     Flashbar.Builder(this)
-        .gravity(Flashbar.Gravity.BOTTOM)
+        .gravity(Flashbar.Gravity.TOP)
         .message(message)
         .messageColor(
             ContextCompat.getColor(
-                this, R.color.white
+                this, android.R.color.black
             )
         )
         .duration(1500)

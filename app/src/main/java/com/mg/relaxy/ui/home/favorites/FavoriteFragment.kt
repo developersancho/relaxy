@@ -10,7 +10,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
 
-    private val viewModel: FavoriteViewModel by viewModel()
+    private val viewModel by viewModel<FavoriteViewModel>()
 
     override val layoutId: Int
         get() = R.layout.fragment_favorite

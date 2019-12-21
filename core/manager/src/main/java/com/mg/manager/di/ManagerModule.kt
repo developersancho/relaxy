@@ -5,5 +5,5 @@ import com.mg.manager.IDataManager
 import org.koin.dsl.module
 
 val managerModule = module {
-    factory { DataManager() as IDataManager }
+    factory { DataManager(get()) as IDataManager }
 }

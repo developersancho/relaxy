@@ -6,7 +6,19 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
+    <color name="purple">#8c00a1</color>
+    <color name="black">#080b0e</color>
+    <color name="blue">#0075eb</color>
+    <color name="orange">#ff6600</color>
+    <color name="red">#ff3030</color>
+    <color name="border_color">#EEEEEE</color>
+
+    <color name="darkblue">#2e5a76</color>
+
+    <color name="light_gray">#dbdbdb</color>
+    <color name="gray">#7e7e7e</color>
+    <color name="semi_gray">#979797</color>
+    <color name="dark_gray">#696969</color>
 
     <color name="color_surface">#121212</color>
     <color name="color_error">#cf6679</color>
