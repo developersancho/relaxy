@@ -3,7 +3,7 @@ package com.mg.remote.model
 
 import com.google.gson.annotations.SerializedName
 
-data class CategoryDetail(
+data class Sound(
 
     @SerializedName("category_id")
     var categoryId: Int,
@@ -18,6 +18,8 @@ data class CategoryDetail(
     var title: String,
 
     @SerializedName("isFav")
-    var isFav: Boolean
+    var isFav: Boolean,
+
+    var isPlaying: Boolean = true
 
 )

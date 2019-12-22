@@ -6,15 +6,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mg.relaxy.R
 import com.mg.relaxy.base.BaseViewHolder
 import com.mg.relaxy.databinding.ItemCategoryDetailBinding
-import com.mg.remote.model.CategoryDetail
+import com.mg.remote.model.Sound
 import com.mg.util.extensions.inflate
 import com.mg.util.extensions.load
 
 class CategoryDetailAdapter :
     RecyclerView.Adapter<CategoryDetailAdapter.CategoryDetailViewHolder>() {
 
-    var onStarClick: ((CategoryDetail) -> Unit)? = null
-    var items: List<CategoryDetail> = listOf()
+    var onStarClick: ((Sound) -> Unit)? = null
+    var items: List<Sound> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryDetailViewHolder =
         CategoryDetailViewHolder(parent.inflate(R.layout.item_category_detail))
@@ -24,7 +24,7 @@ class CategoryDetailAdapter :
 
     override fun getItemCount() = items.size
 
-    fun submitData(list: List<CategoryDetail>) {
+    fun submitData(list: List<Sound>) {
         items = list
         notifyDataSetChanged()
     }
@@ -32,15 +32,15 @@ class CategoryDetailAdapter :
     inner class CategoryDetailViewHolder(view: View) :
         BaseViewHolder<ItemCategoryDetailBinding>(view) {
 
-        fun bind(categoryDetail: CategoryDetail) {
-            binding.item = categoryDetail
-            if (categoryDetail.isFav) {
+        fun bind(sound: Sound) {
+            binding.item = sound
+            if (sound.isFav) {
                 binding.imgStar.load(R.drawable.ic_star_full_24dp)
             } else {
                 binding.imgStar.load(R.drawable.ic_star_border_24dp)
             }
             binding.imgStar.setOnClickListener {
-                onStarClick?.invoke(categoryDetail)
+                onStarClick?.invoke(sound)
             }
         }
 

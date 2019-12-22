@@ -4,7 +4,7 @@ import com.mg.local.dao.SoundDao
 import com.mg.local.entity.SoundEntity
 import com.mg.manager.base.BaseDataManager
 import com.mg.remote.model.Category
-import com.mg.remote.model.CategoryDetail
+import com.mg.remote.model.Sound
 import com.mg.remote.network.NetworkState
 import com.mg.remote.service.ICategoryService
 import kotlinx.coroutines.flow.Flow
@@ -19,9 +19,15 @@ class DataManager(
         emit(apiCall { categoryService.categories() })
     }
 
-    override fun getCategoryDetails(): Flow<NetworkState<ArrayList<CategoryDetail>>> = flow {
+    override fun getCategoryDetails(): Flow<NetworkState<ArrayList<Sound>>> = flow {
         emit(apiCall { categoryService.categoryDetail() })
     }
+
+    override fun getFavorites(): Flow<NetworkState<ArrayList<Sound>>> = flow {
+        emit(apiCall { categoryService.favorites() })
+    }
+
+    override suspend fun getFavSounds(): List<SoundEntity> = soundDao.favSounds()
 
     override suspend fun insertSound(soundEntity: SoundEntity) = soundDao.insert(soundEntity)
 

@@ -53,6 +53,7 @@ dependencies {
     implementation(Libraries.okhttp)
     implementation(Libraries.okhttpLogging)
     implementation(Libraries.retrofitCoroutineAdapter)
+    implementation(Libraries.conscrypt)
 
     // koin
     implementation(Libraries.koinAndroid)
