@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat
 import com.mg.relaxy.R
 import com.mg.relaxy.base.BaseFragment
 import com.mg.relaxy.databinding.FragmentFavoriteBinding
+import com.mg.remote.model.Sound
 import com.mg.util.helpers.SingleEventObserver
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -14,6 +15,7 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
 
     private val viewModel by viewModel<FavoriteViewModel>()
     private var adapter: FavoriteAdapter? = null
+    private var soundList: List<Sound> = listOf()
 
     override val layoutId: Int
         get() = R.layout.fragment_favorite
@@ -28,6 +30,7 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
 
     override fun observeUI() {
         viewModel.favorites.observe(this, SingleEventObserver {
+            soundList = it
             adapter?.submitData(it)
             binding.swipeFavorite.isRefreshing = false
         })
@@ -46,12 +49,13 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
             viewModel.removeItem(it)
         }
 
-        adapter?.onPlayOrPause = {
-
-        }
-
-        adapter?.seekBarProgressChange = { seekBar, progress, fromUser ->
-
+        adapter?.onPlayOrPause = { sound, position, hashMap ->
+            val mediaPlayer = hashMap[sound.id.toString()]
+            if (!sound.isPlaying) {
+                mediaPlayer?.start()
+            } else {
+                mediaPlayer?.release()
+            }
         }
 
     }
@@ -78,9 +82,9 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
         viewModel.getMyFavorites()
     }
 
-    override fun onDestroyView() {
-        adapter = null
-        super.onDestroyView()
+    override fun onPause() {
+        super.onPause()
+        adapter?.stopEveryThing()
     }
 
 }

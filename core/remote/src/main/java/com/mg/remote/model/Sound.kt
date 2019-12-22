@@ -18,6 +18,8 @@ data class Sound(
     var title: String,
 
     @SerializedName("isFav")
-    var isFav: Boolean
+    var isFav: Boolean,
+
+    var isPlaying: Boolean = true
 
 )

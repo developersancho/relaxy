@@ -16,6 +16,7 @@ fun FragmentActivity.showFlashBar(message: String) {
         )
         .duration(1500)
         .messageSizeInSp(16f)
+        .backgroundColorRes(R.color.warm_grey)
         .vibrateOn(Flashbar.Vibration.SHOW)
         .build().show()
 }
