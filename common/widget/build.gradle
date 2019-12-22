@@ -40,6 +40,11 @@ dependencies {
     implementation(Libraries.kotlin)
     implementation(Libraries.appCompat)
     implementation(Libraries.coreKtx)
+    implementation(Libraries.constraintLayout)
+    implementation(Libraries.material)
+    implementation(Libraries.legacy)
+    implementation(Libraries.lottie)
+
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.junitExt)
     androidTestImplementation(Libraries.espressoCore)

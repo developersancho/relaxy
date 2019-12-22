@@ -1,14 +1,14 @@
 package com.mg.relaxy
 
-import android.app.Application
 import android.content.Context
+import androidx.multidex.MultiDexApplication
 import com.mg.relaxy.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidFileProperties
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
-class CoreApp : Application() {
+class CoreApp : MultiDexApplication() {
 
     companion object {
         lateinit var context: Context
@@ -17,6 +17,7 @@ class CoreApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        registerActivityLifecycleCallbacks(CoreLifecycleCallbacks())
         context = applicationContext
         configureDi()
     }

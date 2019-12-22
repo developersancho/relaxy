@@ -43,4 +43,7 @@ dependencies {
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.junitExt)
     androidTestImplementation(Libraries.espressoCore)
+
+    implementation(Libraries.flashbar)
+    implementation(Libraries.glide)
 }

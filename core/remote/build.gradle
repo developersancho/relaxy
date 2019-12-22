@@ -37,6 +37,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(Modules.util)
     implementation(Libraries.kotlin)
     implementation(Libraries.appCompat)
     implementation(Libraries.coreKtx)
@@ -52,6 +53,7 @@ dependencies {
     implementation(Libraries.okhttp)
     implementation(Libraries.okhttpLogging)
     implementation(Libraries.retrofitCoroutineAdapter)
+    implementation(Libraries.conscrypt)
 
     // koin
     implementation(Libraries.koinAndroid)

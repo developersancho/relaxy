@@ -49,6 +49,17 @@ android {
         useBuildCache = true
     }
 
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            def requested = details.requested
+            if (requested.group == "androidx.appcompat") {
+                if (!requested.name.startsWith("multidex")) {
+                    details.useVersion "1.+"
+                }
+            }
+        }
+    }
+
 
     flavorDimensions 'default'
 
@@ -60,7 +71,7 @@ android {
             versionCode = buildVersionCode
             versionName = '1.0.0'
             versionNameSuffix = '-dev'
-            buildConfigField("String", "BASE_URL", "\"http://localhost:8888/\"")
+            buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:8888/relaxy/\"")
             buildConfigField("String", 'DB_NAME', '"relaxy.db"')
             resValue "string", "app_name", "Test - App"
         }
@@ -71,7 +82,7 @@ android {
             versionCode = buildVersionCode
             versionName = '1.0.0'
             versionNameSuffix = ''
-            buildConfigField("String", "BASE_URL", "\"http://localhost:8888/\"")
+            buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:8888/relaxy/\"")
             buildConfigField("String", 'DB_NAME', '"relaxy.db"')
             resValue "string", "app_name", "Prod - App"
         }
@@ -89,12 +100,21 @@ android.applicationVariants.all { variant ->
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // modules
+    implementation project(Modules.manager)
+    implementation project(Modules.remote)
+    implementation project(Modules.local)
+    implementation project(Modules.widget)
+    implementation project(Modules.util)
+
     implementation(Libraries.kotlin)
+    implementation(Libraries.kotlinReflection)
     implementation(Libraries.appCompat)
     implementation(Libraries.coreKtx)
     implementation(Libraries.constraintLayout)
     implementation(Libraries.material)
     implementation(Libraries.legacy)
+    implementation(Libraries.multidex)
     // Bindings
     kapt(Libraries.databinding)
     // navigation
@@ -130,6 +150,9 @@ dependencies {
     // glide
     implementation(Libraries.glide)
     kapt(Libraries.glideCompiler)
+
+    implementation(Libraries.lottie)
+    implementation(Libraries.timber)
 
     // test implementation
     testImplementation(Libraries.koinTest)
